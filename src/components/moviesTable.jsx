@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Table from "./common/table";
+import Like from "./common/like";
 
 class MoviesTable extends Component {
   columns = [
@@ -7,6 +8,12 @@ class MoviesTable extends Component {
     { path: "genre.name", label: "Genre" },
     { path: "numberInStock", label: "Stock" },
     { path: "dailyRentalRate", label: "Rate" },
+    {
+      key: "like",
+      content: movie => (
+        <Like liked={movie.liked} onClick={() => this.props.onLike(movie)} />
+      )
+    },
     {
       key: "delete",
       content: movie => (

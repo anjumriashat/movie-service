@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MoviesTable from "./moviesTable";
-
+import ListGroup from "./common/listGroup";
 import Pagination from "./common/pagination";
 import { getMovies } from "../services/moviesName";
 import { getGenres } from "../services/movieGenre";
@@ -78,6 +78,13 @@ class Movies extends Component {
 
     return (
       <div className="row">
+        <div className="col-3">
+          <ListGroup
+            items={this.state.genres}
+            selectedItem={this.state.selectedGenre}
+            onItemSelect={this.handleGenreSelect}
+          />
+        </div>
         <div className="col">
           <p>Showing {totalCount} movies in the database.</p>
           <MoviesTable
