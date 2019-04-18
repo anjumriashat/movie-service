@@ -5,8 +5,9 @@ import Users from "./components/users";
 import Posts from "./components/posts";
 import Home from "./components/home";
 import UserDetails from "./components/userDetails";
+import Dashboard from "./components/admin/dashboard";
+import NotFound from "./components/notFound";
 import "./App.css";
-import Users from './../../../Section 6- Routing/finish/router-app/src/components/admin/users';
 
 class App extends Component {
   render() {
@@ -21,5 +22,16 @@ class App extends Component {
               render={props => <Users sortBy="newest" {...props} />}
             />
             <Route path="/posts/:year?/:month?" component={Posts} />
+            <Route path="/admin" component={Dashboard} />
             <Redirect from="/messages" to="/posts" />
-            <Route path="/" exact component={H
+            <Route path="/not-found" component={NotFound} />
+            <Route path="/" exact component={Home} />
+            <Redirect to="/not-found" />
+          </Switch>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
